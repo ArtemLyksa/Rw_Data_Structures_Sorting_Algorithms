@@ -38,15 +38,17 @@ final class SortingTestCase: XCTestCase {
   }
   
   func test_bubbleSort() {
-    bubbleSort_custom(&testArray)
+    bubbleSort(&testArray)
     XCTAssertEqual(testArray, sortedArray)
   }
   
   func test_selectionSort() {
-
+    selectionSort(&testArray)
+    XCTAssertEqual(testArray, sortedArray)
   }
   
   func test_insertionSort() {
-
+    insertionSort(&testArray)
+    XCTAssertEqual(testArray, sortedArray)
   }
 }

@@ -50,26 +50,39 @@ func bubbleSort<Element: Comparable>(_ array: inout [Element]) {
     }
 }
 
-func bubbleSort_custom<Element: Comparable>(_ array: inout [Element]) {
+func selectionSort<Element: Comparable>(_ array: inout [Element]) {
     // There is no need to sort the collection if it has less than two elements.
     guard array.count >= 2 else { return }
     
-    var isOrdered = false
-    
-    while !isOrdered {
-        isOrdered = true
-        for i in 0...array.count - 2 {
-            if array[i] > array[i+1] {
-                array.swapAt(i, i+1)
-                isOrdered = false
+    for current in 0..<array.count - 1 {
+        
+        var lowest = current
+        
+        for other in current + 1..<array.count {
+            if array[lowest] > array[other] {
+                lowest = other
             }
+        }
+        if lowest != current {
+            array.swapAt(lowest, current)
         }
     }
 }
 
-
-//TODO: Selection Sort
-
-
-//TODO: Insertion Sort
+func insertionSort<Element: Comparable>(_ array: inout [Element]) {
+    // There is no need to sort the collection if it has less than two elements.
+    guard array.count >= 2 else { return }
+    
+    for current in 1..<array.count {
+        
+        for shifting in (1...current).reversed() {
+            if array[shifting] < array[shifting-1] {
+                array.swapAt(shifting, shifting-1)
+            } else {
+                break
+            }
+        }
+        
+    }
+}
 
